@@ -36,7 +36,16 @@ class UsersController extends Controller
      */
     public function store(Request $request)
     {
-        // 
+          // validate the input
+          $request->validate([
+            'name' => 'required',
+            'email' => 'required'
+        ]);
+        // create a new product
+        User::create($request->all());
+        // redirect the user and send friendly message
+        return redirect()->route('users.index')->with('success', 'User created successfully!');
+     
     }
 
     /**
@@ -70,7 +79,16 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        // validate the input
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required'
+        ]);
+        // create a new product
+        $user->update($request->all());
+        // redirect the user and send friendly message
+        return redirect()->route('users.index')->with('success', 'User updated successfully!');
+     
     }
 
     /**
