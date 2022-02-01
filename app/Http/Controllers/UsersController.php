@@ -84,7 +84,7 @@ class UsersController extends Controller
             'name' => 'required',
             'email' => 'required'
         ]);
-        // create a new product
+        // create a new user
         $user->update($request->all());
         // redirect the user and send friendly message
         return redirect()->route('users.index')->with('success', 'User updated successfully!');
@@ -99,6 +99,10 @@ class UsersController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        // delete the user
+        $user->delete();    
+    
+        //  redirect the user and display success message
+        return redirect()->route('users.index')->with('success', 'User deleted successfully!');
     }
 }

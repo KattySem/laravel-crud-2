@@ -14,5 +14,10 @@
       
     </ul>
   </div> 
-  <a href="{{ route('users.edit', $user) }}"  type="button" class="btn btn-outline-info mt-3" >Edit</a>
+  <form class = "mt-3" method = "POST" action="{{ route('users.destroy', $user) }}">
+    <a href="{{ route('users.edit', $user) }}"  type="button" class="btn btn-outline-info" >Edit</a>
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-outline-danger" >Delete</a>
+   </form>
 @endsection
